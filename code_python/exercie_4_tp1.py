@@ -34,6 +34,18 @@ def compute_ratio(n):
 
 r_n=compute_ratio(n)
 print( "Pour n =  ",n, "le ratio vaut ",r_n)
+
+
+N=100
+ratio_n=[]
+for  n in range(0,N+1):
+     r_n=compute_ratio(n)
+     ratio_n.append(r_n)
+    
+
+print("la liste des ratios est : ",ratio_n)
+
+
     
 
     
