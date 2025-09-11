@@ -21,6 +21,20 @@ print( "la liste des ",n, "premiers elts de la suite de Fibonacci vaut ",my_list
     
      
  
+def compute_ratio(n):
+
+    u_n=compute_f_n(n)
+    u_n_plus_1=compute_f_n(n+1)
+    if (u_n != 0):
+        r_n=u_n_plus_1/u_n
+        return r_n
+    else :
+        exit("ratio is not defined")
+
+
+r_n=compute_ratio(n)
+print( "Pour n =  ",n, "le ratio vaut ",r_n)
+    
 
     
 
