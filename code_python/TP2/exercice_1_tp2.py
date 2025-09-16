@@ -18,6 +18,15 @@ def decision_test(x,n,e=0.0001):
 
 x=1/10000
 n=20
-
+import scipy as sp
 decision=decision_test(x,n)
 print("decision =",decision)
+
+def test_scipy_integrate():
+    def g(x):
+        return x
+    I, precision=sp.integrate.quad(g,0,1) 
+    print("scipy integration is  ",I," should be 0.5","\n","precision",precision )
+    return I 
+
+test_scipy_integrate()
