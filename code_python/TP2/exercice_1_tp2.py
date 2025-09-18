@@ -30,3 +30,53 @@ def test_scipy_integrate():
     return I 
 
 test_scipy_integrate()
+
+
+
+# Exercice 1 : Methode des trapèze
+
+def Factory_f():
+    def f(x):
+        y=np.sin(x+np.exp(x))
+        return y 
+    return f
+g=Factory_f()
+print(g(0))
+
+print(np.linspace(0,1,9))
+
+def trapeze(f,a,b,n):
+    X=np.linspace(a,b,n+1)
+    T_n=0
+    for i in range(0,n):
+        x_i_1=X[i+1]
+        x_i=X[i]
+        y=f(x_i_1)+f(x_i)/2
+        T_n=T_n+((b-a)/(2*n))*(y)
+    return T_n
+g= Factory_f()   
+T_n=trapeze(g,a=0,b=1,n=10)
+print("T_n vaut ",T_n)
+
+def test_trapeze(f,a,b,n):
+    I=sp.integrate.quad(f,a,b)
+    I_hat=trapeze(f,a,b,n)
+    error=abs(I-I_hat)
+    return(error)
+
+error=test_trapeze(g,a=0,b=1,n=10)
+print("the error is worth   ",T_n)
+
+res=np.logspace(2,4,num=50,endpoint=True,base=10.0)
+print(res)
+res_int=[int(res[i]) for i in range(0,len(res))]
+print(res_int)
+
+
+Y=[0  for i in range(0,len(res))]
+for N in range(0,len(res)):
+    error_n=test_trapeze(g,a=0,b=1,n=N)
+    Y[n]=
+    
+
+    
