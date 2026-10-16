@@ -1,0 +1,61 @@
+Pour créer un environnement virtuel Python et l'utiliser dans Jupyter Notebook depuis le terminal de VS Code, voici les étapes. Comme tu travailles sur Windows avec PowerShell, je te donne les commandes adaptées.
+1. Ouvrir le terminal dans ton projet
+Dans VS Code, ouvre ton dossier de travail, puis ouvre le terminal avec Ctrl + ù ou via Terminal → Nouveau terminal.
+Vérifie que Python est installé
+
+python --version
+
+
+2. Créer l'environnement virtuel
+Dans le terminal, exécute :
+python -m venv .venv
+
+
+Cela crée un dossier .venv contenant un environnement Python indépendant.
+3. Activer l'environnement
+Dans PowerShell :
+.\.venv\Scripts\Activate.ps1
+
+
+Si l'activation réussit, tu verras généralement (.venv) au début de la ligne du terminal.
+Si PowerShell bloque l'exécution du script, tu peux utiliser cette commande pour la session en cours :
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+
+Puis réessaie l'activation.
+4. Installer Jupyter et le noyau Python
+Une fois l'environnement activé, exécute :
+python -m pip install --upgrade pip
+python -m pip install jupyter ipykernel
+
+
+Si tu souhaites utiliser les bibliothèques courantes pour les mathématiques et la data science :
+python -m pip install numpy pandas matplotlib scipy sympy
+
+
+5. Enregistrer l'environnement comme noyau Jupyter
+Pour pouvoir le sélectionner dans un notebook :
+python -m ipykernel install --user --name=mon_env --display-name "Python (mon_env)"
+
+
+Tu peux remplacer mon_env par le nom de ton choix.
+6. Lancer Jupyter Notebook
+Dans le même terminal :
+jupyter notebook
+
+
+Tu peux également ouvrir un fichier .ipynb directement dans VS Code.
+Dans ton notebook, clique sur le nom du noyau en haut à droite, puis sélectionne Python (mon_env).
+7. Vérifier que le bon environnement est utilisé
+Dans une cellule Jupyter, exécute :
+import sys
+
+print(sys.executable)
+
+
+
+Le chemin affiché doit pointer vers le dossier .venv de ton projet, par exemple :
+...\ton_projet\.venv\Scripts\python.exe
+
+
+À retenir : si tu crées un environnement par projet, installe les bibliothèques dans cet environnement et sélectionne son noyau dans Jupyter. Tu éviteras ainsi les problèmes de bibliothèques installées dans le mauvais Python.

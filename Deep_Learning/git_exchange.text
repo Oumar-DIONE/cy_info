@@ -1,0 +1,76 @@
+Pour pousser ton code sur GitHub depuis le terminal de VS Code, voici les étapes. Je suppose que tu as déjà un compte GitHub et que ton projet se trouve dans un dossier sur ton ordinateur Windows.
+1. Ouvre le terminal dans ton projet
+Place-toi dans le dossier qui contient ton code :
+cd "C:\chemin\vers\ton\projet"
+
+
+Vérifie l'état de Git :
+git status
+
+
+Si tu obtiens une erreur indiquant que le dépôt n'existe pas, initialise Git :
+git init
+
+
+2. Prépare les fichiers à envoyer
+Avant tout, crée un fichier .gitignore pour éviter d'envoyer ton environnement virtuel et des fichiers inutiles.
+Exemple pour Python et Jupyter :
+.venv/
+venv/
+__pycache__/
+.ipynb_checkpoints/
+.env
+
+
+Ajoute ensuite tes fichiers :
+git add .
+
+
+Vérifie ce qui sera envoyé :
+git status
+
+
+Attention à ne pas inclure de mots de passe, de clés API ou de données confidentielles.
+3. Crée un commit
+Un commit enregistre une version de ton code dans l'historique Git.
+git commit -m "Initial commit"
+
+
+Si Git te demande de configurer ton identité, utilise :
+git config --global user.name "Ton Nom"
+git config --global user.email "ton-email@example.com"
+
+
+Remplace ces valeurs par ton nom et l'adresse associée à tes commits.
+4. Connecte ton projet à GitHub
+Sur GitHub, crée un nouveau dépôt (New repository).
+Copie son URL HTTPS, par exemple :
+https://github.com/TON-UTILISATEUR/TON-DEPOT.git
+Puis exécute :
+git remote add origin https://github.com/TON-UTILISATEUR/TON-DEPOT.git
+
+
+Vérifie l'adresse :
+git remote -v
+
+
+Si le dépôt distant origin existe déjà, ne répète pas la commande remote add : vérifie plutôt son URL.
+5. Envoie ton code sur GitHub
+Pour un nouveau dépôt :
+git branch -M main
+git push -u origin main
+
+
+GitHub peut te demander de t'authentifier via ton navigateur.
+C'est terminé !
+
+Ton code est maintenant envoyé sur GitHub. Pour envoyer les modifications suivantes, tu pourras généralement utiliser :
+git add .
+git commit -m "Description des modifications"
+git push
+
+
+
+Si tu as déjà un dépôt GitHub
+Si ton projet est déjà connecté à GitHub et que tu veux simplement envoyer tes dernières modifications, les trois commandes précédentes (git add, git commit, git push) suffisent généralement.
+Petite question : tu veux pousser un projet Python/Jupyter qui existe déjà sur ton ordinateur, ou tu viens de créer un nouveau dépôt GitHub ? Je pourrai te donner les commandes exactes selon ta situation.
